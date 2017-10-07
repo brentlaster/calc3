@@ -4,13 +4,17 @@
 
 <script language=javascript type="text/javascript">
 
-var plus,minus,divide,multiply
+var plus,minus,divide,multiply,max,pow,min,avg
 
 function initialize(){
  plus=document.calc.operator.options[0]
  minus=document.calc.operator.options[1]
  divide=document.calc.operator.options[2]
  multiply=document.calc.operator.options[3]
+ max=document.calc.operator.options[4]
+ pow=document.calc.operator.options[5]
+ min=document.calc.operator.options[6]
+ avg=document.calc.operator.options[7]
 }
 
 function calculate(){
@@ -23,7 +27,15 @@ function calculate(){
     if (divide.selected)
         document.calc.answer.value = a / b
     if (multiply.selected)
-        document.calc.answer.value = a * b  
+        document.calc.answer.value = a * b
+	if (max.selected)
+		document.calc.answer.value = Math.max(a,b)
+	if (pow.selected)
+		document.calc.answer.value = Math.pow(a,b)
+	if (min.selected)
+		document.calc.answer.value = Math.min(a,b)
+	if (avg.selected)
+		document.calc.answer.value = (a + b) / 2
 }
 
 </script>
@@ -44,12 +56,16 @@ Change the operation via the dropdown selection box if desired.
 <option value=minus>-
 <option value=divide>/
 <option value=multiply>*
+<option value=max>max
+<option value=pow>**
+<option value=min>min
+<option value=avg>avg
 </select>
 
 <input type=text name=val2 size=10>
 =
 <input type=text name=answer size=10>
-<input type=button value=answer onClick="calculate()">
+<input type=button value="show answer" onClick="calculate()">
 </form>
 
 <br><br>
