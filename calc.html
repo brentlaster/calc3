@@ -1,59 +1,63 @@
 <html>
+
 <head>
-   <title>Calc</title>
+    <title>Calc</title>
 
-<script language=javascript type="text/javascript">
+    <script language=javascript type="text/javascript">
+        var plus, minus, divide, multiply, modulus
 
-var plus,minus,divide,multiply
+        function initialize() {
+            plus = document.calc.operator.options[0]
+            minus = document.calc.operator.options[1]
+            divide = document.calc.operator.options[2]
+            multiply = document.calc.operator.options[3]
+            modulus = document.calc.operator.options[4]
+        }
 
-function initialize(){
- plus=document.calc.operator.options[0]
- minus=document.calc.operator.options[1]
- divide=document.calc.operator.options[2]
- multiply=document.calc.operator.options[3]
-}
-
-function calculate(){
-    a = parseInt(document.calc.val1.value)
-    b = parseInt(document.calc.val2.value)
-    if (plus.selected)
-        document.calc.answer.value = a + b
-    if (minus.selected)
-        document.calc.answer.value = a - b
-    if (divide.selected)
-        document.calc.answer.value = a / b
-    if (multiply.selected)
-        document.calc.answer.value = a * b  
-}
-
-</script>
+        function calculate() {
+            a = parseInt(document.calc.val1.value)
+            b = parseInt(document.calc.val2.value)
+            if (plus.selected)
+                document.calc.answer.value = a + b
+            if (minus.selected)
+                document.calc.answer.value = a - b
+            if (divide.selected)
+                document.calc.answer.value = a / b
+            if (multiply.selected)
+                document.calc.answer.value = a * b
+            if (modulus.selected)
+                document.calc.answer.value = a % b
+        }
+    </script>
 
 </head>
 
 <body onLoad="initialize()">
-<h2>Calc</h2>
+    <h2>Calc</h2>
 
-Enter a number in the first box and a number in the second box and select the answer button to see the answer.
-<br>
-Change the operation via the dropdown selection box if desired.
-<form name="calc" action="post">
-<input type=text name=val1 size=10>
+    Enter a number in the first box and a number in the second box and select the answer button to see the answer.
+    <br>
+    Change the operation via the dropdown selection box if desired.
+    <form name="calc" action="post">
+        <input type=text name=val1 size=10>
 
-<select name=operator>
-<option value=plus>+
-<option value=minus>-
-<option value=divide>/
-<option value=multiply>*
-</select>
+        <select name=operator>
+            <option value=plus>+
+            <option value=minus>-
+            <option value=divide>/
+            <option value=multiply>*
+            <option value=modulus>%
+        </select>
 
-<input type=text name=val2 size=10>
-=
-<input type=text name=answer size=10>
-<input type=button value=answer onClick="calculate()">
-</form>
+        <input type=text name=val2 size=10>
+        =
+        <input type=text name=answer size=10>
+        <input type=button value=answer onClick="calculate()">
+    </form>
 
-<br><br>
+    <br><br>
 
 
 </body>
+
 </html>
